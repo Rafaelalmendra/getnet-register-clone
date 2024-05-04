@@ -30,15 +30,9 @@ export class OffersComponent {
     arrows: true,
     responsive: [
       {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 2,
-        },
-      },
-      {
         breakpoint: 1200,
         settings: {
-          slidesToShow: 3,
+          arrows: false,
         },
       },
     ],

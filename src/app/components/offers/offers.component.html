@@ -2,19 +2,31 @@
   <div
     class="max-w-[1440px] w-full flex flex-col justify-center px-[22px] mb-8"
   >
-    <div class="flex items-center gap-[20px] pt-[1.5rem] pb-[3rem]">
-      <app-select-filter title="Vendo online"></app-select-filter>
-      <app-select-filter title="Vendo em loja física"></app-select-filter>
-      <app-select-filter title="Delivery"></app-select-filter>
+    <div
+      class="w-full flex flex-col lg:flex-row items-center gap-[20px] pt-[1.5rem] pb-[3rem]"
+    >
+      <div class="lg:w-auto w-full">
+        <app-select-filter title="Vendo online"></app-select-filter>
+      </div>
+
+      <div class="lg:w-auto w-full">
+        <app-select-filter title="Vendo em loja física"></app-select-filter>
+      </div>
+
+      <div class="lg:w-auto w-full">
+        <app-select-filter title="Delivery"></app-select-filter>
+      </div>
     </div>
 
-    <p class="mb-[0.35em] text-[2.125rem] font-semibold text-[#ec0000]">
+    <p
+      class="lg:px-[30px] mb-[0.35em] text-[20px] lg:text-[2.125rem] font-semibold text-[#ec0000]"
+    >
       Ofertas especiais
     </p>
 
     <ngx-slick-carousel [config]="config" class="slickSwiper">
       @for (slide of slides; track slide.img) {
-      <div ngxSlickItem class="slide pl-[30px] pr-[14px]">
+      <div ngxSlickItem class="slide lg:pl-[30px] lg:pr-[14px]">
         <app-offer-card
           invoiceOver="R$ 2.000"
           title="Get Smart para App Eye Essencial"

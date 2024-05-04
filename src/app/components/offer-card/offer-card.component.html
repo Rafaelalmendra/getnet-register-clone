@@ -1,13 +1,15 @@
 <div
   class="relative w-full flex flex-col shadow-sm bg-white px-8 py-4 rounded-[10px]"
 >
-  <div class="flex justify-between pl-[28px] pt-[28px] h-[380px] gap-4">
+  <div
+    class="flex lg:justify-between flex-col lg:flex-row lg:pl-[28px] lg:pt-[28px] pt-[18px] lg:h-[380px] h-[420px] lg:gap-4 lg:text-start text-center"
+  >
     <div class="flex flex-col justify-start">
       <div class="p-2 text-sm text-white bg-[#ec0000] rounded">
         <p>Solução ideal para quem fatura acima de {{ invoiceOver }}</p>
       </div>
 
-      <p class="text-[1.5rem] font-semibold pt-[24px] text-[#ec0000]">
+      <p class="text-[1.5rem] font-semibold lg:pt-[24px] text-[#ec0000]">
         {{ title }}
       </p>
 
@@ -21,15 +23,15 @@
       alt="Imagem da máquina de cartão da Getnet"
     /> -->
 
-    <div class="flex justify-start items-start">
+    <div class="flex items-center justify-center">
       <img
-        class="h-[340px] object-contain"
+        class="h-[200px] lg:h-[340px] object-contain"
         src="../../../assets/images/machine-test.png"
         alt="Imagem da máquina de cartão da Getnet"
       />
     </div>
 
-    <div class="flex pl-4 justify-start items-start">
+    <div class="hidden lg:flex pl-4 justify-start items-start">
       <div class="flex flex-col gap-4">
         <div>
           <p class="text-[1.25rem] font-semibold text-[#ec0000]">
@@ -61,14 +63,14 @@
 
   <div class="w-full border-b"></div>
 
-  <div class="w-full flex items-center justify-end mt-4">
+  <div class="w-full flex flex-col lg:flex-row items-center justify-end mt-4">
     <button
-      class="min-w-[200px] py-2 text-sm text-[#ec0000] hover:text-[#d81212] transition-colors"
+      class="w-full lg:w-[200px] py-2 text-sm text-[#ec0000] hover:text-[#d81212] transition-colors"
     >
       MAIS DETALHES
     </button>
     <button
-      class="min-w-[200px] py-2 text-sm text-white bg-[#ec0000] hover:bg-[#d81212] transition-colors rounded-full"
+      class="w-full lg:w-[200px] py-2 text-sm text-white bg-[#ec0000] hover:bg-[#d81212] transition-colors rounded-full"
     >
       ADICIONAR
     </button>

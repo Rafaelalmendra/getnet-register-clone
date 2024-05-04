@@ -1,34 +1,42 @@
 <div
   class="relative w-full flex flex-col shadow-sm bg-white px-8 py-4 rounded-[10px]"
 >
-  <div class="flex justify-between pl-[28px] pt-[48px] h-[400px] gap-4">
+  <div class="flex justify-between pl-[28px] pt-[28px] h-[380px] gap-4">
     <div class="flex flex-col justify-start">
       <div class="p-2 text-sm text-white bg-[#ec0000] rounded">
-        <p>Solução ideal para quem fatura acima de R$ 2.000</p>
+        <p>Solução ideal para quem fatura acima de {{ invoiceOver }}</p>
       </div>
 
       <p class="text-[1.5rem] font-semibold pt-[24px] text-[#ec0000]">
-        Get Smart para App Eye Essencial
+        {{ title }}
       </p>
 
       <p class="text-[#66707a] font-semibold pt-3">Aluguel</p>
-      <p class="text-[32px] font-semibold">R$ 29,90 /mês</p>
+      <p class="text-[32px] font-semibold">{{ rent }}</p>
     </div>
 
-    <img
+    <!-- <img
       class="h-full object-contain"
-      src="../../../assets/images/machine-test.png"
+      src="{{ image }}"
       alt="Imagem da máquina de cartão da Getnet"
-    />
+    /> -->
 
-    <div class="flex pl-4 justify-center items-center">
+    <div class="flex justify-start items-start">
+      <img
+        class="h-[340px] object-contain"
+        src="../../../assets/images/machine-test.png"
+        alt="Imagem da máquina de cartão da Getnet"
+      />
+    </div>
+
+    <div class="flex pl-4 justify-start items-start">
       <div class="flex flex-col gap-4">
         <div>
           <p class="text-[1.25rem] font-semibold text-[#ec0000]">
             Get Smart | Receba já
           </p>
           <p class="text-sm">
-            Máquina versátil, ótima para loja física e delivery
+            {{ description }}
           </p>
         </div>
 
@@ -36,7 +44,7 @@
           <p class="text-[1.25rem] font-semibold text-[#ec0000]">
             Get Pay (Grátis)
           </p>
-          <p class="text-sm">Plano inicial: R$ 1,00 por Link pago</p>
+          <p class="text-sm">{{ getPay }}</p>
         </div>
 
         <div>
@@ -44,9 +52,7 @@
             Condição especial
           </p>
           <p class="text-sm max-w-[300px]">
-            Get Smart por R$129,90. A licença da Eye é de R$20,00 e será cobrada
-            via Getstore somente após o aceite da licença diretamente na Get
-            Smart.
+            {{ specialCondition }}
           </p>
         </div>
       </div>

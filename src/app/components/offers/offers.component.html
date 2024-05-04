@@ -12,6 +12,22 @@
       Ofertas especiais
     </p>
 
-    <app-offer-card></app-offer-card>
+    <ngx-slick-carousel [config]="config" class="slickSwiper">
+      @for (slide of slides; track slide.img) {
+      <div ngxSlickItem class="slide pl-[30px] pr-[14px]">
+        <app-offer-card
+          invoiceOver="R$ 2.000"
+          title="Get Smart para App Eye Essencial"
+          rent="R$ 29,90 /mês"
+          description="Máquina versátil, ótima para loja física e delivery"
+          getPay="Plano inicial: R$ 1,00 por Link pago"
+          specialCondition=" Get Smart por R$129,90. A licença da Eye é de R$20,00 e será cobrada
+        via Getstore somente após o aceite da licença diretamente na Get
+        Smart."
+          image=""
+        ></app-offer-card>
+      </div>
+      }
+    </ngx-slick-carousel>
   </div>
 </section>

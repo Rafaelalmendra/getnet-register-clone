@@ -14,6 +14,7 @@ export class OfferCardComponent {
   @Input() description!: string;
   @Input() getPay!: string;
   @Input() specialCondition!: string;
+  @Input() image!: string;
 
   constructor() {}
 }

@@ -5,7 +5,7 @@
     class="flex lg:justify-between flex-col lg:flex-row lg:pl-[28px] lg:pt-[28px] pt-[18px] lg:h-[380px] h-[420px] lg:gap-4 lg:text-start text-center"
   >
     <div class="flex flex-col justify-start">
-      <div class="p-2 text-sm text-white bg-[#ec0000] rounded">
+      <div class="max-w-[360px] p-2 text-sm text-white bg-[#ec0000] rounded">
         <p>Solução ideal para quem fatura acima de {{ invoiceOver }}</p>
       </div>
 
@@ -17,16 +17,10 @@
       <p class="text-[32px] font-semibold">{{ rent }}</p>
     </div>
 
-    <!-- <img
-      class="h-full object-contain"
-      src="{{ image }}"
-      alt="Imagem da máquina de cartão da Getnet"
-    /> -->
-
     <div class="flex items-center justify-center">
       <img
         class="h-[200px] lg:h-[340px] object-contain"
-        src="../../../assets/images/machine-test.png"
+        src="{{ image }}"
         alt="Imagem da máquina de cartão da Getnet"
       />
     </div>
@@ -53,9 +47,10 @@
           <p class="text-[1.25rem] font-semibold text-[#ec0000]">
             Condição especial
           </p>
-          <p class="text-sm max-w-[300px]">
-            {{ specialCondition }}
-          </p>
+          <div
+            class="text-sm max-w-[300px]"
+            [innerHTML]="specialCondition"
+          ></div>
         </div>
       </div>
     </div>

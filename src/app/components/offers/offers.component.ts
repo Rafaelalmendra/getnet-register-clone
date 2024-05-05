@@ -1,8 +1,19 @@
-import { Component, ViewChild } from '@angular/core';
 import {
-  SlickCarouselComponent,
-  SlickCarouselModule,
-} from 'ngx-slick-carousel';
+  Inject,
+  OnInit,
+  Component,
+  PLATFORM_ID,
+  makeStateKey,
+  TransferState,
+  ChangeDetectorRef,
+} from '@angular/core';
+import { NgIf, NgFor, isPlatformServer } from '@angular/common';
+
+import { SlickCarouselModule } from 'ngx-slick-carousel';
+
+import { GetOfferingsService } from '../../services';
+
+import type { Offering } from '../../types';
 
 import { OfferCardComponent } from '../offer-card/offer-card.component';
 import { SelectFilterComponent } from '../select-filter/select-filter.component';
@@ -10,18 +21,18 @@ import { SelectFilterComponent } from '../select-filter/select-filter.component'
 @Component({
   selector: 'app-offers',
   standalone: true,
-  imports: [SlickCarouselModule, OfferCardComponent, SelectFilterComponent],
+  imports: [
+    SlickCarouselModule,
+    OfferCardComponent,
+    SelectFilterComponent,
+    NgFor,
+    NgIf,
+  ],
+
   templateUrl: './offers.component.html',
   styleUrl: './offers.component.scss',
 })
-export class OffersComponent {
-  slides = [
-    { img: 'http://placehold.it/350x150/000000' },
-    { img: 'http://placehold.it/350x150/111111' },
-    { img: 'http://placehold.it/350x150/333333' },
-    { img: 'http://placehold.it/350x150/666666' },
-  ];
-
+export class OffersComponent implements OnInit {
   config = {
     infinite: true,
     slidesToShow: 1,
@@ -37,4 +48,31 @@ export class OffersComponent {
       },
     ],
   };
+
+  offerings: Offering[] = [];
+
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private getOfferings: GetOfferingsService,
+    private transferState: TransferState
+  ) {
+    this.platformId = platformId;
+  }
+
+  async ngOnInit(): Promise<void> {
+    const offeringsKey = makeStateKey<Offering[]>('offerings');
+
+    if (isPlatformServer(this.platformId)) {
+      this.getOfferings.getOfferings().then((items) => {
+        this.transferState.set(offeringsKey, items);
+      });
+    }
+
+    setTimeout(() => {
+      let recoveredOfferings = this.transferState.get(offeringsKey, []);
+      this.offerings = recoveredOfferings;
+
+      console.log('Offerings:', this.offerings);
+    }, 300);
+  }
 }

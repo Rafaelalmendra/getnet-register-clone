@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { NgFor, NgIf } from '@angular/common';
 
-import type { Offering } from '../../types';
+import type { Offering, ProductCharacteristic } from '../../types';
 
 @Component({
   selector: 'app-drawer',
@@ -18,7 +18,7 @@ export class DrawerComponent implements OnInit {
   offer: Offering = {} as Offering;
   @Output() onClose = new EventEmitter<void>();
 
-  characteristics: { description: string; image_url: string }[] = [];
+  characteristics: ProductCharacteristic[] = [];
   benefits: string[] = [];
 
   constructor() {}

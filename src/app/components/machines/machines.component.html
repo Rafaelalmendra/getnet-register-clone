@@ -1,3 +1,9 @@
+<app-drawer
+  *ngIf="openDetails && activeOffer"
+  [offer]="activeOffer"
+  (onClose)="handleCloseDetails()"
+></app-drawer>
+
 <section
   id="maquininha"
   class="w-full flex justify-center items-center bg-[#F5F7FA]"
@@ -57,6 +63,7 @@
 
           <div class="w-full flex justify-end">
             <button
+              (click)="handleOpenDetails(offerings[1])"
               class="py-2 text-sm text-[#ec0000] hover:text-[#d81212] transition-colors mt-3"
             >
               MAIS DETALHES

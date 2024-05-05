@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, makeStateKey } from '@angular/core';
 
 import type { Offering } from '../types';
+import { TransferState } from '@angular/platform-browser';
 
 @Injectable({
   providedIn: 'root',
@@ -9,9 +10,17 @@ export class GetOfferingsService {
   readonly apiURL =
     'https://credenciamentodigital.getnet.com.br/server/v1/offerings?country=BR&channel=getnet_ecommerce';
 
-  constructor() {}
+  constructor(private transferState: TransferState) {}
 
   getOfferings() {
+    const offeringsKey = makeStateKey<Offering[]>('offerings');
+    let offerings = this.transferState.get(offeringsKey, []);
+
+    if (offerings.length) {
+      console.log('Offerings from cache');
+      return Promise.resolve(offerings);
+    }
+
     return fetch(this.apiURL)
       .then((response) => response.json())
       .then((data) =>

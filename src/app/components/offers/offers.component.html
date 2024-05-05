@@ -24,20 +24,23 @@
       Ofertas especiais
     </p>
 
-    <ngx-slick-carousel [config]="config" class="slickSwiper">
+    <ngx-slick-carousel [config]="carouselConfig" class="slickSwiper">
       <div *ngFor="let offering of offerings">
         <div ngxSlickItem class="slide lg:pl-[30px] lg:pr-[14px]">
           <app-offer-card
-            invoiceOver="R$ 2.000"
             title="{{ offering.name }}"
             rent="R$ {{ offering.price }} / mês"
-            description="Máquina versátil, ótima para loja física e delivery"
-            getPay="Plano inicial: R$ 1,00 por Link pago"
             specialCondition="{{ offering.special_conditions }}"
             image="{{ offering.image_url }}"
+            invoiceOver="R$ 2.000"
+            getPay="Plano inicial: R$ 1,00 por Link pago"
+            description="Máquina versátil, ótima para loja física e delivery"
+            (handleClickDetails)="handleOpenDetails(offering)"
           ></app-offer-card>
         </div>
       </div>
     </ngx-slick-carousel>
   </div>
+
+  <app-drawer *ngIf="openDetails"></app-drawer>
 </section>

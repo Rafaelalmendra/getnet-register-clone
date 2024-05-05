@@ -14,6 +14,7 @@ import { GetOfferingsService } from '../../services';
 
 import type { Offering } from '../../types';
 
+import { DrawerComponent } from '../drawer/drawer.component';
 import { OfferCardComponent } from '../offer-card/offer-card.component';
 import { SelectFilterComponent } from '../select-filter/select-filter.component';
 
@@ -21,18 +22,20 @@ import { SelectFilterComponent } from '../select-filter/select-filter.component'
   selector: 'app-offers',
   standalone: true,
   imports: [
+    NgIf,
+    NgFor,
     SlickCarouselModule,
+
+    DrawerComponent,
     OfferCardComponent,
     SelectFilterComponent,
-    NgFor,
-    NgIf,
   ],
 
   templateUrl: './offers.component.html',
   styleUrl: './offers.component.scss',
 })
 export class OffersComponent implements OnInit {
-  config = {
+  carouselConfig = {
     infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -49,6 +52,9 @@ export class OffersComponent implements OnInit {
   };
 
   offerings: Offering[] = [];
+
+  openDetails: boolean = false;
+  activeOffering: Offering | null = null;
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
@@ -71,5 +77,17 @@ export class OffersComponent implements OnInit {
       let recoveredOfferings = this.transferState.get(offeringsKey, []);
       this.offerings = recoveredOfferings;
     }, 300);
+  }
+
+  handleOpenDetails(offer: Offering): void {
+    console.log('handleOpenDetails', offer);
+
+    this.openDetails = true;
+    this.activeOffering = offer;
+  }
+
+  handleCloseDetails(): void {
+    this.openDetails = false;
+    this.activeOffering = null;
   }
 }

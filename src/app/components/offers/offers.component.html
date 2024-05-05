@@ -1,6 +1,9 @@
 <app-drawer *ngIf="openDetails"></app-drawer>
 
-<section class="w-full flex justify-center items-center bg-[#F5F7FA] pb-2">
+<section
+  class="w-full flex justify-center items-center bg-[#F5F7FA] pb-2"
+  *ngIf="offerings.length > 0"
+>
   <div
     class="max-w-[1440px] w-full flex flex-col justify-center px-[22px] mb-8"
   >

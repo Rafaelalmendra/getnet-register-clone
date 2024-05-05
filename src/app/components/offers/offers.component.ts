@@ -1,16 +1,7 @@
-import {
-  Inject,
-  OnInit,
-  Component,
-  PLATFORM_ID,
-  makeStateKey,
-  TransferState,
-} from '@angular/core';
-import { NgIf, NgFor, isPlatformServer } from '@angular/common';
+import { Input, Inject, Component, PLATFORM_ID } from '@angular/core';
+import { NgIf, NgFor } from '@angular/common';
 
 import { SlickCarouselModule } from 'ngx-slick-carousel';
-
-import { GetOfferingsService } from '../../services';
 
 import type { Offering } from '../../types';
 
@@ -34,7 +25,12 @@ import { SelectFilterComponent } from '../select-filter/select-filter.component'
   templateUrl: './offers.component.html',
   styleUrl: './offers.component.scss',
 })
-export class OffersComponent implements OnInit {
+export class OffersComponent {
+  @Input({
+    required: true,
+  })
+  offerings: Offering[] = [];
+
   carouselConfig = {
     infinite: true,
     slidesToShow: 1,
@@ -51,32 +47,11 @@ export class OffersComponent implements OnInit {
     ],
   };
 
-  offerings: Offering[] = [];
-
   openDetails: boolean = false;
   activeOffering: Offering | null = null;
 
-  constructor(
-    @Inject(PLATFORM_ID) private platformId: Object,
-    private getOfferings: GetOfferingsService,
-    private transferState: TransferState
-  ) {
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
     this.platformId = platformId;
-  }
-
-  async ngOnInit(): Promise<void> {
-    const offeringsKey = makeStateKey<Offering[]>('offerings');
-
-    if (isPlatformServer(this.platformId)) {
-      this.getOfferings.getOfferings().then((items) => {
-        this.transferState.set(offeringsKey, items);
-      });
-    }
-
-    setTimeout(() => {
-      let recoveredOfferings = this.transferState.get(offeringsKey, []);
-      this.offerings = recoveredOfferings;
-    }, 300);
   }
 
   handleOpenDetails(offer: Offering): void {

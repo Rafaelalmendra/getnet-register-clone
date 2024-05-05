@@ -1,16 +1,7 @@
-import {
-  Inject,
-  OnInit,
-  Component,
-  PLATFORM_ID,
-  makeStateKey,
-} from '@angular/core';
-import { NgFor, NgIf, isPlatformServer } from '@angular/common';
-import { TransferState } from '@angular/platform-browser';
+import { Component, Input } from '@angular/core';
+import { NgFor, NgIf } from '@angular/common';
 
-import { GetOfferingsService } from '../../services';
-
-import type { Offering, ProductCharacteristic } from '../../types';
+import type { Offering } from '../../types';
 
 @Component({
   selector: 'app-machines',
@@ -19,37 +10,13 @@ import type { Offering, ProductCharacteristic } from '../../types';
   templateUrl: './machines.component.html',
   styleUrl: './machines.component.scss',
 })
-export class MachinesComponent implements OnInit {
-  getMini: Offering | null = null;
-  benefits: ProductCharacteristic[] = [];
+export class MachinesComponent {
+  @Input({
+    required: true,
+  })
+  offerings: Offering[] = [];
 
-  constructor(
-    @Inject(PLATFORM_ID) private platformId: Object,
-    private getOfferings: GetOfferingsService,
-    private transferState: TransferState
-  ) {
-    this.platformId = platformId;
-  }
+  constructor() {}
 
-  async ngOnInit(): Promise<void> {
-    const offeringsKey = makeStateKey<Offering>('getMini');
-
-    if (isPlatformServer(this.platformId)) {
-      this.getOfferings.getOfferings().then((items) => {
-        const getMini = items[1];
-        this.transferState.set(offeringsKey, getMini);
-      });
-    }
-
-    setTimeout(() => {
-      let recoveredOfferings = this.transferState.get(offeringsKey, null);
-
-      this.getMini = recoveredOfferings;
-
-      const getBenefits =
-        recoveredOfferings?.items[2].product.product_characteristics || [];
-
-      this.benefits = getBenefits;
-    }, 300);
-  }
+  async ngOnInit() {}
 }

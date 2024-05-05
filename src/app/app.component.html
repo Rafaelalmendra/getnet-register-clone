@@ -1,5 +1,7 @@
 <main>
   <app-hero></app-hero>
-  <app-offers></app-offers>
-  <app-machines></app-machines>
+  <div *ngIf="offerings">
+    <app-offers [offerings]="offerings"></app-offers>
+    <app-machines [offerings]="offerings"></app-machines>
+  </div>
 </main>

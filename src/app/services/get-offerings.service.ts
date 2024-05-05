@@ -1,7 +1,6 @@
-import { Injectable, makeStateKey } from '@angular/core';
+import { Injectable, TransferState, makeStateKey } from '@angular/core';
 
 import type { Offering } from '../types';
-import { TransferState } from '@angular/platform-browser';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +11,7 @@ export class GetOfferingsService {
 
   constructor(private transferState: TransferState) {}
 
-  getOfferings() {
+  async getOfferings() {
     const offeringsKey = makeStateKey<Offering[]>('offerings');
     let offerings = this.transferState.get(offeringsKey, []);
 
@@ -21,17 +20,19 @@ export class GetOfferingsService {
       return Promise.resolve(offerings);
     }
 
-    return fetch(this.apiURL)
-      .then((response) => response.json())
-      .then((data) =>
-        data
-          .filter(
-            (offering: Offering) => offering.campaign_code === '1-HLSIMAM'
-          )
-          .map((offering: Offering) => ({
-            ...offering,
-            price: (offering.price / 100).toFixed(2).replace('.', ','),
-          }))
-      );
+    try {
+      const response = await fetch(this.apiURL);
+      const data = await response.json();
+
+      return data
+        .filter((offering: Offering) => offering.campaign_code === '1-HLSIMAM')
+        .map((offering: Offering) => ({
+          ...offering,
+          price: (offering.price / 100).toFixed(2).replace('.', ','),
+        }));
+    } catch (error) {
+      console.error('Error fetching offerings:', error);
+      return [];
+    }
   }
 }

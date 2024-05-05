@@ -35,8 +35,8 @@ export interface Product {
   composite_type?: string;
   phone_support_getnet_included?: boolean;
   pricing_model?: PricingModel;
-  product_characteristics?: ProductCharacteristic[];
-  product_benefits?: string[];
+  product_characteristics: ProductCharacteristic[];
+  product_benefits: string[];
   product_items?: ProductItem[];
   terminal_type?: string;
   transaction_channel_type?: string;

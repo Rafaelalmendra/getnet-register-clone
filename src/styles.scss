@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
 .slick-prev:before,
 .slick-next:before {
   font-size: 40px !important;
@@ -20,5 +29,6 @@
   margin-top: 20px !important;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.no-scroll {
+  overflow: hidden;
+}

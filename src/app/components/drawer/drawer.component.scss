@@ -1,0 +1,21 @@
+#drawer {
+  width: 100vw;
+  height: 100%;
+  z-index: 1000;
+  position: fixed;
+  flex: 1;
+  top: 0;
+  left: 0;
+
+  background-color: #fff;
+  transition: transform 0.3s ease-in-out;
+}
+
+#drawer-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow-y: auto;
+
+  z-index: 999;
+}

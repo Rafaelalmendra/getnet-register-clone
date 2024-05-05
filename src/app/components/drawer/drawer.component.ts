@@ -1,25 +1,29 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
+import { NgFor, NgIf } from '@angular/common';
 
 import type { Offering } from '../../types';
 
 @Component({
   selector: 'app-drawer',
   standalone: true,
-  imports: [MatIconModule],
+  imports: [NgFor, NgIf, MatIconModule],
   templateUrl: './drawer.component.html',
   styleUrl: './drawer.component.scss',
 })
-export class DrawerComponent {
-  // @Input({
-  //   required: true,
-  // })
-  // offer: Offering = {} as Offering;
+export class DrawerComponent implements OnInit {
+  @Input({
+    required: true,
+  })
+  offer: Offering = {} as Offering;
 
-  @Input() offer: Offering | null = null;
   @Output() onClose = new EventEmitter<void>();
 
   constructor() {}
+
+  ngOnInit(): void {
+    console.log('offer: ', this.offer.items[1].product.product_benefits);
+  }
 
   onCloseDrawer(): void {
     this.onClose.emit();

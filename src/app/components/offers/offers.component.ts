@@ -1,5 +1,5 @@
 import { Input, Inject, Component, PLATFORM_ID } from '@angular/core';
-import { NgIf, NgFor } from '@angular/common';
+import { NgIf, NgFor, isPlatformBrowser } from '@angular/common';
 
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 
@@ -8,6 +8,7 @@ import type { Offering } from '../../types';
 import { DrawerComponent } from '../drawer/drawer.component';
 import { OfferCardComponent } from '../offer-card/offer-card.component';
 import { SelectFilterComponent } from '../select-filter/select-filter.component';
+import { platformBrowser } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-offers',
@@ -55,14 +56,20 @@ export class OffersComponent {
   }
 
   handleOpenDetails(offer: Offering): void {
-    console.log('handleOpenDetails: ', offer);
-
     this.activeOffer = offer;
     this.openDetails = true;
+
+    if (isPlatformBrowser(this.platformId)) {
+      document.body.classList.add('no-scroll');
+    }
   }
 
   handleCloseDetails(): void {
     this.openDetails = false;
     this.activeOffer = null;
+
+    if (isPlatformBrowser(this.platformId)) {
+      document.body.classList.remove('no-scroll');
+    }
   }
 }

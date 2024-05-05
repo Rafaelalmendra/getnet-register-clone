@@ -1,60 +1,126 @@
-<div id="drawer" class="fixed top-0 left-0 z-50 w-screen h-screen bg-white">
-  <header
-    class="fixed top-0 w-full flex items-center justify-between p-5 shadow-lg"
-  >
-    <a href="/">
-      <img
-        src="../../../assets/images/logo-red.png"
-        alt="Logo da GetNet - Maquininha de Cartão"
-        class="w-[120px] h-[26px] object-contain"
-      />
-    </a>
-
-    <img
-      src="../../../assets/icons/icon-cart.png"
-      alt="Logo do carrinho de compras da GetNet"
-      class="w-[26px] h-[26px] object-contain mr-3"
-    />
-  </header>
-
-  <div class="w-full flex items-center mt-16 p-4 bg-[#f5f7fa]">
-    <button
-      (click)="onCloseDrawer()"
-      class="flex items-center justify-center p-2 hover:bg-red-100 rounded-full transition-colors"
+<div id="drawer" *ngIf="offer">
+  <main id="drawer-content">
+    <header
+      class="fixed top-0 w-full flex items-center justify-between p-5 shadow-lg bg-white"
     >
-      <mat-icon
-        aria-hidden="false"
-        aria-label="Fechar o drawer"
-        fontIcon="arrow_back"
-        class="text-red-500 cursor-pointer"
-      ></mat-icon>
-    </button>
-  </div>
+      <a href="/">
+        <img
+          src="../../../assets/images/logo-red.png"
+          alt="Logo da GetNet - Maquininha de Cartão"
+          class="w-[120px] h-[26px] object-contain"
+        />
+      </a>
 
-  <div class="w-full flex justify-center py-4 gap-5 bg-[#f5f7fa]">
-    <div class="pt-3">
-      <p class="text-[#ec0000]">Oferta especial</p>
-      <h5 class="text-[32px] font-medium text-[#ec0000]">GET MINI</h5>
-      <p class="text-[20px] font-medium">
-        Solução ideal para quem fatura acima de R$ 1.499
-      </p>
-      <p class="text-[32px] font-medium mt-2 mb-1">R$ 29,90 /mês</p>
+      <img
+        src="../../../assets/icons/icon-cart.png"
+        alt="Logo do carrinho de compras da GetNet"
+        class="w-[26px] h-[26px] object-contain mr-3"
+      />
+    </header>
 
+    <div class="w-full flex items-center mt-16 p-4 bg-[#f5f7fa]">
       <button
-        class="w-full lg:w-[200px] py-2 text-sm text-white bg-[#ec0000] hover:bg-[#d81212] transition-colors rounded-full"
+        (click)="onCloseDrawer()"
+        class="flex items-center justify-center p-2 hover:bg-red-100 rounded-full transition-colors"
       >
-        ADICIONAR
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Fechar o drawer"
+          fontIcon="arrow_back"
+          class="text-red-500 cursor-pointer"
+        ></mat-icon>
       </button>
     </div>
 
-    <div class="flex items-center justify-center">
-      <img
-        class="h-[200px] lg:h-[380px] object-contain"
-        src="../../../assets/images/get-mini.png"
-        alt="Imagem da máquina de cartão da Getnet"
-      />
-    </div>
-  </div>
+    <div class="w-full flex justify-center items-center bg-[#F5F7FA]">
+      <div class="max-w-[1024px] w-full flex justify-between">
+        <div class="pt-3">
+          <p class="text-[#ec0000]">Oferta especial</p>
+          <h5 class="text-[32px] font-medium text-[#ec0000]">
+            {{ offer.name }}
+          </h5>
+          <p class="text-[20px] font-medium">
+            Solução ideal para quem fatura acima de R$ 1.499
+          </p>
+          <p class="text-[32px] font-medium mt-2 mb-1">
+            R$ {{ offer.price }} /mês
+          </p>
 
-  <h1>teste</h1>
+          <button
+            class="w-full lg:w-[200px] py-2 text-sm text-white bg-[#ec0000] hover:bg-[#d81212] transition-colors rounded-full"
+          >
+            ADICIONAR
+          </button>
+        </div>
+
+        <div class="flex items-center justify-center">
+          <img
+            class="lg:w-[190px] h-[200px] lg:h-[380px] object-cover"
+            src="{{ offer.image_url }}"
+            alt="Imagem da máquina de cartão da Getnet"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="py-8 text-center flex flex-col gap-3 justify-center items-center"
+    >
+      <p class="text-[#ec0000] text-[1.875rem]">
+        Solução ideal para quem vende online, delivery e em lojas físicas
+      </p>
+      <p class="text-[1.5rem]">
+        Maquininha, link de pagamento e um aplicativo com conta digital para
+        gestão das vendas
+      </p>
+    </div>
+
+    <div class="w-full flex justify-center items-center mt-4">
+      <div class="max-w-[1024px] w-full flex justify-between">
+        <div class="pt-3">
+          <h5 class="text-[32px] font-medium text-[#ec0000]">GET MINI</h5>
+          <p class="text-[18px] font-medium">
+            Máquina versátil, ótima para lojas física e delivery
+          </p>
+
+          <div class="mt-6 flex flex-col gap-2">
+            <div
+              *ngFor="
+                let offer of offer.items[1].product.product_characteristics
+              "
+            >
+              <div class="flex gap-2 items-center">
+                <img
+                  class="w-[24px] h-[24px]"
+                  src="{{ offer.image_url }}"
+                  alt="Benefício da máquina Get Mini"
+                />
+                <p>{{ offer.description }}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 flex flex-col gap-2">
+            <p class="text-[32px] font-medium text-[#ec0000]">Benefícios</p>
+
+            <ul class="flex flex-col gap-2 items-start list-disc pl-4">
+              <li *ngFor="let offer of offer.items[1].product.product_benefits">
+                <p>{{ offer }}</p>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-center">
+          <img
+            class="lg:w-[190px] h-[200px] lg:h-[380px] object-cover"
+            src="../../../assets/images/get-mini.png"
+            alt="Imagem da máquina de cartão da Getnet"
+          />
+        </div>
+      </div>
+    </div>
+
+    <h1>teste</h1>
+  </main>
 </div>

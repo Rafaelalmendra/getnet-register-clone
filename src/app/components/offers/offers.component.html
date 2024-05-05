@@ -1,10 +1,10 @@
-<!-- <app-drawer
+<app-drawer
   *ngIf="openDetails && activeOffer"
   [offer]="activeOffer"
   (onClose)="handleCloseDetails()"
-></app-drawer> -->
+></app-drawer>
 
-<app-drawer [offer]="activeOffer" (onClose)="handleCloseDetails()"></app-drawer>
+<!-- <app-drawer [offer]="activeOffer" (onClose)="handleCloseDetails()"></app-drawer> -->
 
 <section
   class="w-full flex justify-center items-center bg-[#F5F7FA] pb-2"
@@ -30,7 +30,7 @@
     </div>
 
     <p
-      class="lg:px-[30px] mb-[0.35em] text-[20px] lg:text-[2.125rem] font-semibold text-[#ec0000]"
+      class="lg:px-[30px] mb-[0.35em] text-[20px] lg:text-[2.125rem] font-medium text-[#ec0000]"
     >
       Ofertas especiais
     </p>

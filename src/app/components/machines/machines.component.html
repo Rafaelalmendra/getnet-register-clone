@@ -21,7 +21,7 @@
       class="relative w-full flex flex-col shadow-sm bg-white px-8 pb-4 rounded-[10px]"
     >
       <div
-        class="flex flex-col lg:flex-row lg:pl-[28px] lg:h-[400px] h-[420px] lg:gap-4 lg:text-start text-center"
+        class="flex flex-col lg:flex-row lg:pl-[28px] lg:h-[400px] h-[460px] lg:gap-4 lg:text-start text-center"
       >
         <div class="flex items-center justify-center">
           <img
@@ -41,7 +41,7 @@
             R$ {{ offerings[1].price }} /mês
           </p>
 
-          <div class="w-[80%] mt-5 grid grid-cols-2 gap-2">
+          <div class="hidden lg:grid w-[80%] mt-5 grid-cols-2 gap-2">
             <div
               *ngFor="
                 let offering of offerings[1].items[2].product

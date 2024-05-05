@@ -48,7 +48,7 @@ export class OffersComponent {
   };
 
   openDetails: boolean = false;
-  activeOffering: Offering | null = null;
+  activeOffer: Offering | null = null;
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {
     this.platformId = platformId;
@@ -57,12 +57,12 @@ export class OffersComponent {
   handleOpenDetails(offer: Offering): void {
     console.log('handleOpenDetails: ', offer);
 
-    this.activeOffering = offer;
+    this.activeOffer = offer;
     this.openDetails = true;
   }
 
   handleCloseDetails(): void {
     this.openDetails = false;
-    this.activeOffering = null;
+    this.activeOffer = null;
   }
 }

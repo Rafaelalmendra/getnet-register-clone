@@ -5,7 +5,6 @@ import {
   PLATFORM_ID,
   makeStateKey,
   TransferState,
-  ChangeDetectorRef,
 } from '@angular/core';
 import { NgIf, NgFor, isPlatformServer } from '@angular/common';
 
@@ -71,8 +70,6 @@ export class OffersComponent implements OnInit {
     setTimeout(() => {
       let recoveredOfferings = this.transferState.get(offeringsKey, []);
       this.offerings = recoveredOfferings;
-
-      console.log('Offerings:', this.offerings);
     }, 300);
   }
 }

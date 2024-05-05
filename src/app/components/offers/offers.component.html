@@ -1,4 +1,4 @@
-<section class="w-full flex justify-center items-center bg-[#F5F7FA]">
+<section class="w-full flex justify-center items-center bg-[#F5F7FA] pb-2">
   <div
     class="max-w-[1440px] w-full flex flex-col justify-center px-[22px] mb-8"
   >
@@ -30,7 +30,7 @@
           <app-offer-card
             invoiceOver="R$ 2.000"
             title="{{ offering.name }}"
-            rent="{{ offering.price }} / mês"
+            rent="R$ {{ offering.price }} / mês"
             description="Máquina versátil, ótima para loja física e delivery"
             getPay="Plano inicial: R$ 1,00 por Link pago"
             specialCondition="{{ offering.special_conditions }}"

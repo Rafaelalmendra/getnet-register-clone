@@ -16,6 +16,7 @@ import type { Offering } from './types';
 import {
   HeroComponent,
   OffersComponent,
+  FooterComponent,
   MachinesComponent,
 } from './components';
 
@@ -28,6 +29,7 @@ import {
     RouterOutlet,
 
     HeroComponent,
+    FooterComponent,
     OffersComponent,
     MachinesComponent,
   ],

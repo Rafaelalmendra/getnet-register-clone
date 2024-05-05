@@ -78,24 +78,22 @@
     <div class="w-full flex justify-center items-center mt-4">
       <div class="max-w-[1024px] w-full flex justify-between">
         <div class="pt-3">
-          <h5 class="text-[32px] font-medium text-[#ec0000]">GET MINI</h5>
+          <h5 class="text-[32px] font-medium text-[#ec0000]">
+            {{ offer.name }}"
+          </h5>
           <p class="text-[18px] font-medium">
             Máquina versátil, ótima para lojas física e delivery
           </p>
 
           <div class="mt-6 flex flex-col gap-2">
-            <div
-              *ngFor="
-                let offer of offer.items[1].product.product_characteristics
-              "
-            >
+            <div *ngFor="let characteristic of characteristics">
               <div class="flex gap-2 items-center">
                 <img
                   class="w-[24px] h-[24px]"
-                  src="{{ offer.image_url }}"
+                  src="{{ characteristic.image_url }}"
                   alt="Benefício da máquina Get Mini"
                 />
-                <p>{{ offer.description }}</p>
+                <p>{{ characteristic.description }}</p>
               </div>
             </div>
           </div>
@@ -104,8 +102,8 @@
             <p class="text-[32px] font-medium text-[#ec0000]">Benefícios</p>
 
             <ul class="flex flex-col gap-2 items-start list-disc pl-4">
-              <li *ngFor="let offer of offer.items[1].product.product_benefits">
-                <p>{{ offer }}</p>
+              <li *ngFor="let benefit of benefits">
+                <p>{{ benefit }}</p>
               </li>
             </ul>
           </div>
@@ -114,7 +112,7 @@
         <div class="flex items-center justify-center">
           <img
             class="lg:w-[190px] h-[200px] lg:h-[380px] object-cover"
-            src="../../../assets/images/get-mini.png"
+            src="{{ offer.image_url }}"
             alt="Imagem da máquina de cartão da Getnet"
           />
         </div>

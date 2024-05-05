@@ -16,13 +16,24 @@ export class DrawerComponent implements OnInit {
     required: true,
   })
   offer: Offering = {} as Offering;
-
   @Output() onClose = new EventEmitter<void>();
+
+  characteristics: { description: string; image_url: string }[] = [];
+  benefits: string[] = [];
 
   constructor() {}
 
   ngOnInit(): void {
-    console.log('offer: ', this.offer.items[1].product.product_benefits);
+    if (this.offer.name === 'Get Smart para App Eye Essencial') {
+      this.characteristics =
+        this.offer.items[1].product.product_characteristics;
+      this.benefits = this.offer.items[1].product.product_benefits;
+
+      return;
+    }
+
+    this.characteristics = this.offer.items[2].product.product_characteristics;
+    this.benefits = this.offer.items[2].product.product_benefits;
   }
 
   onCloseDrawer(): void {

@@ -1,8 +1,10 @@
-<app-drawer
+<!-- <app-drawer
   *ngIf="openDetails && activeOffer"
   [offer]="activeOffer"
   (onClose)="handleCloseDetails()"
-></app-drawer>
+></app-drawer> -->
+
+<app-drawer [offer]="activeOffer" (onClose)="handleCloseDetails()"></app-drawer>
 
 <section
   class="w-full flex justify-center items-center bg-[#F5F7FA] pb-2"

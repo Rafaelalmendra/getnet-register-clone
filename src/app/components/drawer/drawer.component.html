@@ -1,8 +1,59 @@
-<div id="drawer" class="fixed top-0 left-0 z-50 w-screen h-screen p-4 bg-white">
-  <div
-    class="flex justify-between items-center w-full h-12 border-b border-gray-200 mb-4"
+<div id="drawer" class="fixed top-0 left-0 z-50 w-screen h-screen bg-white">
+  <header
+    class="fixed top-0 w-full flex items-center justify-between p-5 shadow-lg"
   >
-    <button (click)="onCloseDrawer()">Fechar</button>
+    <a href="/">
+      <img
+        src="../../../assets/images/logo-red.png"
+        alt="Logo da GetNet - Maquininha de Cartão"
+        class="w-[120px] h-[26px] object-contain"
+      />
+    </a>
+
+    <img
+      src="../../../assets/icons/icon-cart.png"
+      alt="Logo do carrinho de compras da GetNet"
+      class="w-[26px] h-[26px] object-contain mr-3"
+    />
+  </header>
+
+  <div class="w-full flex items-center mt-16 p-4 bg-[#f5f7fa]">
+    <button
+      (click)="onCloseDrawer()"
+      class="flex items-center justify-center p-2 hover:bg-red-100 rounded-full transition-colors"
+    >
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Fechar o drawer"
+        fontIcon="arrow_back"
+        class="text-red-500 cursor-pointer"
+      ></mat-icon>
+    </button>
+  </div>
+
+  <div class="w-full flex justify-center py-4 gap-5 bg-[#f5f7fa]">
+    <div class="pt-3">
+      <p class="text-[#ec0000]">Oferta especial</p>
+      <h5 class="text-[32px] font-medium text-[#ec0000]">GET MINI</h5>
+      <p class="text-[20px] font-medium">
+        Solução ideal para quem fatura acima de R$ 1.499
+      </p>
+      <p class="text-[32px] font-medium mt-2 mb-1">R$ 29,90 /mês</p>
+
+      <button
+        class="w-full lg:w-[200px] py-2 text-sm text-white bg-[#ec0000] hover:bg-[#d81212] transition-colors rounded-full"
+      >
+        ADICIONAR
+      </button>
+    </div>
+
+    <div class="flex items-center justify-center">
+      <img
+        class="h-[200px] lg:h-[380px] object-contain"
+        src="../../../assets/images/get-mini.png"
+        alt="Imagem da máquina de cartão da Getnet"
+      />
+    </div>
   </div>
 
   <h1>teste</h1>

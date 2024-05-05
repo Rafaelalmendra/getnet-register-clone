@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-offer-card',
@@ -15,7 +15,11 @@ export class OfferCardComponent {
   @Input() getPay!: string;
   @Input() specialCondition!: string;
   @Input() image!: string;
-  @Input() handleClickDetails!: () => void;
+  @Output() clickEvent = new EventEmitter<void>();
 
   constructor() {}
+
+  onClick() {
+    this.clickEvent.emit();
+  }
 }

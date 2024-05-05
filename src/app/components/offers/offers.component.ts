@@ -80,10 +80,10 @@ export class OffersComponent implements OnInit {
   }
 
   handleOpenDetails(offer: Offering): void {
-    console.log('handleOpenDetails', offer);
+    console.log('handleOpenDetails: ', offer);
 
-    this.openDetails = true;
     this.activeOffering = offer;
+    this.openDetails = true;
   }
 
   handleCloseDetails(): void {

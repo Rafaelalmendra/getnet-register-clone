@@ -1,3 +1,5 @@
+<app-drawer *ngIf="openDetails"></app-drawer>
+
 <section class="w-full flex justify-center items-center bg-[#F5F7FA] pb-2">
   <div
     class="max-w-[1440px] w-full flex flex-col justify-center px-[22px] mb-8"
@@ -35,12 +37,10 @@
             invoiceOver="R$ 2.000"
             getPay="Plano inicial: R$ 1,00 por Link pago"
             description="Máquina versátil, ótima para loja física e delivery"
-            (handleClickDetails)="handleOpenDetails(offering)"
+            (clickEvent)="handleOpenDetails(offering)"
           ></app-offer-card>
         </div>
       </div>
     </ngx-slick-carousel>
   </div>
-
-  <app-drawer *ngIf="openDetails"></app-drawer>
 </section>

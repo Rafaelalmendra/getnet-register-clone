@@ -4,10 +4,12 @@ import { NgFor, NgIf } from '@angular/common';
 
 import type { Offering, ProductCharacteristic } from '../../types';
 
+import { FooterComponent } from '../footer/footer.component';
+
 @Component({
   selector: 'app-drawer',
   standalone: true,
-  imports: [NgFor, NgIf, MatIconModule],
+  imports: [NgFor, NgIf, MatIconModule, FooterComponent],
   templateUrl: './drawer.component.html',
   styleUrl: './drawer.component.scss',
 })

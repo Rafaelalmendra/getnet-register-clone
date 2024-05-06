@@ -4,7 +4,7 @@
 
 Utilizei o Framework Angular para desenvolver a aplicação.
 
-## 📖 Sobre o desafio
+## 📖 Sobre o projeto
 
 A GetNet oferece aos clientes uma gama completa de soluções físicas e digitais para seus negócios, desde soluções de pagamento até gestão de negócios, no balcão e na internet, do pequeno ao grande.
 

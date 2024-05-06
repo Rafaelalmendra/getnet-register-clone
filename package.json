@@ -1,6 +1,8 @@
 {
   "name": "getnet-register-clone",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "Project aimed at cloning the GetNet registration website",
+  "author": "Rafael Almendra",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

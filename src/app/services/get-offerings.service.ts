@@ -13,10 +13,9 @@ export class GetOfferingsService {
 
   async getOfferings() {
     const offeringsKey = makeStateKey<Offering[]>('offerings');
-    let offerings = this.transferState.get(offeringsKey, []);
+    const offerings = this.transferState.get(offeringsKey, []);
 
     if (offerings.length) {
-      console.log('Offerings from cache');
       return Promise.resolve(offerings);
     }
 

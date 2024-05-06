@@ -40,7 +40,7 @@ export class AppComponent implements OnInit {
   offerings: Offering[] = [];
 
   constructor(
-    @Inject(PLATFORM_ID) private platformId: Object,
+    @Inject(PLATFORM_ID) private platformId: object,
     private getOfferings: GetOfferingsService,
     private transferState: TransferState
   ) {
@@ -57,7 +57,7 @@ export class AppComponent implements OnInit {
     }
 
     setTimeout(() => {
-      let recoveredOfferings = this.transferState.get(offeringsKey, []);
+      const recoveredOfferings = this.transferState.get(offeringsKey, []);
       this.offerings = recoveredOfferings;
     }, 500);
   }

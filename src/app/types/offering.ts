@@ -13,7 +13,6 @@ export interface Offering {
   price: number;
   items: Item[];
   filters: Filter[];
-  related_offerings: any[];
   offering_type: string;
   start_date_available: string;
 }

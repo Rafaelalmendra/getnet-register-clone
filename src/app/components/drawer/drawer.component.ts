@@ -18,7 +18,7 @@ export class DrawerComponent implements OnInit {
     required: true,
   })
   offer: Offering = {} as Offering;
-  @Output() onClose = new EventEmitter<void>();
+  @Output() closeDrawer = new EventEmitter<void>();
 
   characteristics: ProductCharacteristic[] = [];
   benefits: string[] = [];
@@ -39,6 +39,6 @@ export class DrawerComponent implements OnInit {
   }
 
   onCloseDrawer(): void {
-    this.onClose.emit();
+    this.closeDrawer.emit();
   }
 }

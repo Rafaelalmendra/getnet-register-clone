@@ -50,7 +50,7 @@ export class OffersComponent {
   openDetails: boolean = false;
   activeOffer: Offering | null = null;
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
+  constructor(@Inject(PLATFORM_ID) private platformId: object) {
     this.platformId = platformId;
   }
 

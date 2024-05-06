@@ -1,7 +1,7 @@
 import { Component, Inject, Input, PLATFORM_ID } from '@angular/core';
 import { NgFor, NgIf, isPlatformBrowser } from '@angular/common';
 
-import type { Offering } from '../../types';
+import type { Offering } from 'types';
 
 import { DrawerComponent } from '../drawer/drawer.component';
 

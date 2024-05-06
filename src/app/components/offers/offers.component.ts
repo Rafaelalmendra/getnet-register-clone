@@ -3,12 +3,11 @@ import { NgIf, NgFor, isPlatformBrowser } from '@angular/common';
 
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 
-import type { Offering } from '../../types';
+import type { Offering } from 'types';
 
 import { DrawerComponent } from '../drawer/drawer.component';
 import { OfferCardComponent } from '../offer-card/offer-card.component';
 import { SelectFilterComponent } from '../select-filter/select-filter.component';
-import { platformBrowser } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-offers',

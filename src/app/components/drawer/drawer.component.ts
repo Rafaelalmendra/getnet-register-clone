@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { NgFor, NgIf } from '@angular/common';
 
-import type { Offering, ProductCharacteristic } from '../../types';
+import type { Offering, ProductCharacteristic } from 'types';
 
 import { FooterComponent } from '../footer/footer.component';
 

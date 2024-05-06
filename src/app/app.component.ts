@@ -9,16 +9,16 @@ import {
   makeStateKey,
 } from '@angular/core';
 
-import { GetOfferingsService } from './services';
+import { GetOfferingsService } from 'services';
 
-import type { Offering } from './types';
+import type { Offering } from 'types';
 
 import {
   HeroComponent,
   OffersComponent,
   FooterComponent,
   MachinesComponent,
-} from './components';
+} from 'components';
 
 @Component({
   selector: 'app-root',
